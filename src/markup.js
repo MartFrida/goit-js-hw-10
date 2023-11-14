@@ -1,10 +1,10 @@
 import { items } from "./index.js";
 import { breedSelect, btnFetch, catInfo, posts, errorEl } from './refs.js';
 
+//for selector
 export function renderMarkup(data) {
-  const markup = data.map((cat) => createCatsID(cat)).join("");
+  const markup = data.map((catsId) => createCatsID(catsId)).join("");
   breedSelect.innerHTML = markup;
-  // як додати елемент в селект
 
   items.length === 0
     ? errorEl.classList.remove("is-hidden")
@@ -18,7 +18,20 @@ export function createCatsID(cat) {
   `
 }
 
-export function createCatCard(id){
-  
+//for card
+export function renderCat(data) {
+  const mrup = data.map((cat) => createCatCard(cat)).join('');
+  catInfo.innerHTML = mrup;
 }
 
+export function createCatCard(cat,name) {
+  const { url, id } = cat;
+  return `
+  <div class="cat-card">
+     <img src="${url}" alt="${id}" />
+     <div class="info">
+       <b class="description">${id}</b>
+     </div>
+  </div>
+  `;
+}
