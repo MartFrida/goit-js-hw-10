@@ -31,7 +31,6 @@ ol {
 /* open btn */
 button.btn {
   background-color: #43b581;
-
   border: none;
   border-radius: 5px;
   color: #fff;
@@ -40,8 +39,7 @@ button.btn {
   height: 36px;
   padding: 8px 16px;
   transition: background-color 0.3s;
-
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 button.btn:hover {
@@ -67,8 +65,6 @@ button.btn:hover {
   align-items: flex-start;
   gap: 20px;
 }
-
-.container-img {}
 
 img {
   width: 100%;
