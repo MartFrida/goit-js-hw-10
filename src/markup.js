@@ -1,5 +1,5 @@
 import { items } from "./index.js";
-import { breedSelect, btnFetch, catInfo, posts, errorEl } from './refs.js';
+import { breedSelect, catInfo, errorEl } from './refs.js';
 
 //for selector
 export function renderMarkup(data) {
@@ -30,8 +30,10 @@ export function createCatCard(cat) {
   const { name, description, temperament } = cat.breeds[0];
   return `
   <div class="cat-card">
-     <img src="${url}" alt="${name}" />
-     <div class="info">
+  <div class=container-img>
+  <img src="${url}" alt="${name}" />
+  </div>
+       <div class="info">
      <h2 class="name">${name}</h2>
        <b class="description">Description: ${description}</b>
        <b class="description">Temperament: ${temperament}</b>
