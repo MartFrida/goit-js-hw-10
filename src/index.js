@@ -6,9 +6,16 @@ import { renderMarkup, renderCat } from './markup';
 
 export let items = [];
 let idCat = breedSelect.value;
-
+console.log(idCat)
 btnFetch.addEventListener('click', onRenderCat)
 document.addEventListener("DOMContentLoaded", onRenderPage);
+breedSelect.addEventListener('change', onSelectCange);
+let breedsId=null;
+
+function onSelectCange(ev) {
+  breedsId = ev.target.value;
+
+}
 
 function onRenderPage() {
   loaderEl.classList.remove("is-hidden");
@@ -24,14 +31,15 @@ function onRenderPage() {
     });
 }
 
-//змінити респонс
+
 function onRenderCat() {
-  loaderEl.classList.remove("is-hidden");
-  fetchCatByBreed(idCat)
+  console.log(breedsId)
+  // loaderEl.classList.remove("is-hidden");
+  fetchCatByBreed(breedsId)
     .then((res) => {
-      console.log(res)
       renderCat(res)
     })
     .catch(console.log)
     .finally(() => loaderEl.classList.add('is-hidden'))
+  
 }

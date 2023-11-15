@@ -12,9 +12,9 @@ export function renderMarkup(data) {
 }
 
 export function createCatsID(cat) {
-  const { id } = cat;
+  const { id, name } = cat;
   return `
-  <option value=${id}>${id}</option>
+  <option value=${id}>${name}</option>
   `
 }
 
@@ -24,13 +24,17 @@ export function renderCat(data) {
   catInfo.innerHTML = mrup;
 }
 
-export function createCatCard(cat,name) {
-  const { url, id } = cat;
+export function createCatCard(cat) {
+  console.log(cat.breeds[0])
+  const { url } = cat;
+  const { name, description, temperament } = cat.breeds[0];
   return `
   <div class="cat-card">
-     <img src="${url}" alt="${id}" />
+     <img src="${url}" alt="${name}" />
      <div class="info">
-       <b class="description">${id}</b>
+     <h2 class="name">${name}</h2>
+       <b class="description">Description: ${description}</b>
+       <b class="description">Temperament: ${temperament}</b>
      </div>
   </div>
   `;
