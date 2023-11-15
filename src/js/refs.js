@@ -1,4 +1,4 @@
-export const breedSelect = document.querySelector('select.breed-select');
+export const breedSelect = document.querySelector('#breedSelectElement');
 export const catInfo = document.querySelector('div.cat-info');
 export const btnFetch = document.querySelector('button.btn');
 export const posts = document.querySelector('ul.posts');
