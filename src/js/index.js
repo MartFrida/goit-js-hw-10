@@ -1,4 +1,4 @@
-import { breedSelect, btnFetch, errorEl, loaderEl } from './refs.js';
+import { breedSelect, catInfo, btnFetch, errorEl, loaderEl } from './refs.js';
 import { getBreeds, fetchCatByBreed } from './cat-api.js';
 import { renderMarkup, renderCat } from './markup.js';
 import SlimSelect from 'slim-select';
@@ -44,6 +44,7 @@ function onRenderCat() {
   fetchCatByBreed(breedsId)
     .then((res) => {
       renderCat(res);
+      catInfo.classList.remove('is-hidden');
     })
     .catch((err) => {
       console.log(errorEl);
