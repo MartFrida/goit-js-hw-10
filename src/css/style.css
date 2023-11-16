@@ -28,6 +28,10 @@ ol {
   list-style: none;
 }
 
+div.ss-main{
+  width: 300px;
+}
+
 /* open btn */
 button.btn {
   background-color: #43b581;

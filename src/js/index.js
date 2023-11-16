@@ -1,11 +1,9 @@
 import { breedSelect, btnFetch, errorEl, loaderEl } from './refs.js';
 import { getBreeds, fetchCatByBreed } from './cat-api.js';
 import { renderMarkup, renderCat } from './markup.js';
-// import SlimSelect from 'slim-select';
-
-// new SlimSelect({
-//   select: '#breedSelectElement'
-// })
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
+import Notiflix from 'notiflix';
 
 export let items = [];
 btnFetch.addEventListener('click', onRenderCat)
@@ -15,6 +13,9 @@ let breedsId = null;
 
 function onSelectChange(ev) {
   breedsId = ev.target.value;
+  btnFetch.classList.remove('is-hidden');
+  errorEl.classList.add('is-hidden');
+  catInfo.classList.add('is-hidden');
 }
 
 function onRenderPage() {
@@ -24,24 +25,30 @@ function onRenderPage() {
       items = [...res];
       breedsId = res[0].id;
       renderMarkup(items);
+      new SlimSelect({
+        select: '#breedSelectElement'
+      })
       breedSelect.classList.remove('is-hidden');
+      btnFetch.classList.remove('is-hidden');
     })
-    .catch((err) => {
+    .catch(() => {
       console.log(errorEl);
       errorEl.classList.remove('is-hidden');
     })
     .finally(() => {
-      loaderEl.classList.add("is-hidden");
+      loaderEl.classList.add('is-hidden');
     });
 }
-
 
 function onRenderCat() {
   fetchCatByBreed(breedsId)
     .then((res) => {
-      renderCat(res)
+      renderCat(res);
     })
-    .catch(console.log)
+    .catch((err) => {
+      console.log(errorEl);
+      errorEl.classList.remove('is-hidden');
+      btnFetch.classList.add('is-hidden');
+    })
     .finally(() => loaderEl.classList.add('is-hidden'))
-
 }

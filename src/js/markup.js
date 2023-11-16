@@ -25,7 +25,6 @@ export function renderCat(data) {
 }
 
 export function createCatCard(cat) {
-  console.log(cat.breeds[0])
   const { url } = cat;
   const { name, description, temperament } = cat.breeds[0];
   return `
