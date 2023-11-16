@@ -32,8 +32,8 @@ function onRenderPage() {
       btnFetch.classList.remove('is-hidden');
     })
     .catch(() => {
-      console.log(errorEl);
-      errorEl.classList.remove('is-hidden');
+      Notiflix.Notify.failure('Oops! Something went wrong! Try reloading the page!');
+      // errorEl.classList.remove('is-hidden');
     })
     .finally(() => {
       loaderEl.classList.add('is-hidden');
